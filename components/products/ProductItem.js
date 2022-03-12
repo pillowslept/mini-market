@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 import Card from '../ui/Card';
 import classes from './ProductItem.module.css';
@@ -14,8 +15,9 @@ function ProductItem(props) {
     <li className={classes.item}>
       <Card>
         <div className={classes.image}>
-          <img
+          <Image
             alt={props.title}
+            layout='fill'
             src={props.image}
           />
         </div>
