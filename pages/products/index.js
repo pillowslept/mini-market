@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import ProductList from '../../components/products/ProductList';
 
 const DUMMY_PRODUCTS = [
@@ -18,17 +17,18 @@ const DUMMY_PRODUCTS = [
   },
 ];
 
-function ProductsPage() {
-  const [loadedProducts, setLoadedProducts] = useState([]);
-
-  useEffect(() => {
-    // fetch data from server
-    setLoadedProducts(DUMMY_PRODUCTS);
-  }, []);
-
+function ProductsPage(props) {
   return (
-    <ProductList products={loadedProducts} />
+    <ProductList products={props.products} />
   );
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      products: DUMMY_PRODUCTS,
+    },
+  };
 }
 
 export default ProductsPage;
