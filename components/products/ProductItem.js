@@ -7,8 +7,8 @@ import classes from './ProductItem.module.css';
 function ProductItem(props) {
   const router = useRouter();
 
-  const showDetailsHandler = () => {
-    router.push(`/products/${'some-product-id'}`);
+  const showDetailsHandler = (productId) => {
+    router.push(`/products/${productId}`);
   };
 
   return (
@@ -26,7 +26,7 @@ function ProductItem(props) {
           <address>{props.address}</address>
         </div>
         <div className={classes.actions}>
-          <button onClick={showDetailsHandler}>Show Details</button>
+          <button onClick={() => showDetailsHandler(props.id)}>Show Details</button>
         </div>
       </Card>
     </li>
